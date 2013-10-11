@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  video_duration: 9.99
+  voice_over: MyString
+  video_type: MyString
+  requirements: MyText
+  project_status: MyString
+  payment_status: MyString
+  user_id: 1
+
+two:
+  title: MyString
+  video_duration: 9.99
+  voice_over: MyString
+  video_type: MyString
+  requirements: MyText
+  project_status: MyString
+  payment_status: MyString
+  user_id: 1

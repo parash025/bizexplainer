@@ -1,0 +1,47 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#signup{
+	width: 400px;
+	padding: 20px 100px 20px 100px;
+	margin: 10% auto;
+	background: #fff;
+
+
+	padding-bottom: 1em;
+	border: .07em solid;
+	border-color: #e5e5e5;
+	border-color: rgba(0,0,0,0.1);
+	background-color: #fff;
+	-webkit-box-shadow: 0 0 .625em .07em rgba(0,0,0,0.05);
+	-moz-box-shadow: 0 0 .625em .07em rgba(0,0,0,0.05);
+	box-shadow: 0 0 .625em .07em rgba(0,0,0,0.05);
+
+	input[type="text"],input[type="password"]{
+		background-color: white;
+		font-family: inherit;
+		border: 1px solid #DDDDDD;
+		-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+		-moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+		color: rgba(0, 0, 0, 0.75);
+		display: block;
+		font-size: 16px;
+		margin: 0 8px 12px 0;
+		padding: 10px;
+		height: 22px;
+		width: 80%;
+		-webkit-transition: all 0.15s linear;
+		-moz-transition: all 0.15s linear;
+		-o-transition: all 0.15s linear;
+		transition: all 0.15s linear;		
+	}
+
+	h1{
+		color: #dd4749;
+		margin-bottom: 11px;
+		font-weight: normal;
+	}
+}
+

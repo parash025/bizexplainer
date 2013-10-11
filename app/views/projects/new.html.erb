@@ -1,0 +1,42 @@
+
+	
+	<div id="project_content" class="centered content">
+	<h1>Create A Project</h1>
+
+		<%= form_for @project, url: {action: "create"} do |f| %>
+	<p>
+		<%= f.text_field :title, placeholder: 'Your Project Title' %>
+	</p>
+	<p>
+		How, long do you want your video to be?
+	</p>
+	<p>
+		<%= f.radio_button :video_duration, '1.0', :checked => true, class: 'inline' %> 
+  		<%= label :video_duration, 'One Minute', class: 'inline' %>
+  		<%= f.radio_button :video_duration, '2.0' %>
+  		<%= label :video_duration, 'Two Minute' %>
+	</p>
+	
+	<p>
+		How, long do you want your video to be?
+	</p>
+
+	<p>
+		<%= f.radio_button :voice_over, 'male', :checked => true %> 
+  		<%= label :voice_over, 'Male' %>
+  		<%= f.radio_button :voice_over, 'female' %>
+  		<%= label :voice_over, 'Female' %>
+
+	</p>
+
+	<%= f.text_area :requirements, size: "300x12", placeholder: "Type your message here..." %>
+
+	<p>
+		<%= f.submit "Create", class: "btn btn-primary pull-right" %>
+	</p>
+	
+	<% end %>
+
+	</div>
+
+

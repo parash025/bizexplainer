@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BizExplainer</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+  <!-- [if lt IE 9] -->
+
+</head>
+<body>
+		<div class="container">
+			<%= yield %>			
+		
+			<%= debug(params) %>
+		</div>
+
+</body>
+</html>
