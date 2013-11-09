@@ -1,75 +1,89 @@
-<div id="signup">
+<div class="row register">
 
-	<h1>Sign Up</h1>
+  <div class="col-md-6">
 
-	<%= form_for @user, :html => {:class => 'form-horizontal'}, url: {action: 'create'} do |f| %>
+    <div class="panel panel-success">
+      <div class="panel-heading">Log In</div>
 
-    <% if @user.errors.any? %>
-      <div class="error_messages">
-        <ul>
+      <div class="panel-body">
 
-          <%  @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-          <% end %>
-        </ul>
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Remember me
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-success">Sign in</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-md-6">
+
+    <div class="panel panel-warning">
+      <div class="panel-heading">Register</div>
+
+      <div id="signup">
+        <%= form_for @user, html: {role: "form"} do |f| %>
+            <% if @user.errors.any? %>
+                <ul>
+                  <% @user.errors.full_messages.each do |e| %>
+
+                      <li> <%= e %></li>
+                  <% end %>
+
+                </ul>
+            <% end %>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <%= f.text_field :email, placeholder: "Email", type: "email", class: "form-control", id: "email" %>
+            </div>
+            <div class="form-group">
+              <label for="email">Name</label>
+              <%= f.text_field :name, placeholder: "Name", type: "name", class: "form-control", id: "name" %>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <%= f.password_field :password, placeholder: "Password", type: "password", class: "form-control", id: "password" %>
+            </div>
+            <div class="form-group">
+              <label for="password_confirmation">Confirm Password</label>
+              <%= f.password_field :password_confirmation, placeholder: "Confirm Password", type: "password", class: "form-control", id: "password_confirmation" %>
+            </div>
+
+            <%= f.submit "Create an Account", class: "btn btn-warning" %>
+        <% end %>
 
       </div>
-     <% end %>
 
+    </div>
 
-	<div class="form-group">
-
-		<div>
-			<%= f.label :name %>
-		</div>
-		
-		<%= f.text_field :name, placeholder: 'Enter your name' %>
-		
-	</div>
-
-	
-	<div class="form-group">
-		
-		<div>
-			<%= f.label :email %>
-		</div>
-
-		
-		
-		<%= f.text_field :email, placeholder: 'Enter your e-email' %>
-
-	</div>
-	
-	
-	<div class="form-group">
-		<div>
-			<%= f.label :password %>
-		</div>
-
-		<%= f.password_field :password , placeholder: 'Create a password'%>
-
-	</div>
-
-	
-	<div class="form-group">
-
-		<div>
-			<%= f.label	:password_confirmation , 'Confirmation' %>
-		</div>
-		
-
-
-		<%= f.password_field :password_confirmation,  placeholder: 'Confirm your password' %>
-
-	</div>
-
-	<p>
-		<%= f.submit 'Create my account', class: 'btn btn-success btn-large btn-primary' %>
-	</p>
-
-
-
-	<% end  %>
+  </div>
 
 
 </div>

@@ -27,6 +27,13 @@ gem "therubyracer"
 gem "less-rails"
 gem 'bootstrap-sass-rails'
 
+gem 'bootstrap-sass', '2.3.2.0'
+
+
+group :assets do
+  gem 'twitter-bootstrap-rails'
+end
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 

@@ -1,30 +1,22 @@
+require 'digest/md5'
+
 class User < ActiveRecord::Base
+  has_secure_password
 
-  attr_accessor :password
-  before_save :encrypt_password
+  before_validation :prep_email
+  before_save :create_avatar_url
 
-  validates :password, confirmation: true, presence: true
   validates :email, presence: true, uniqueness: true
+  validates :name, presence: true
 
+  private
 
-  def encrypt_password
-
-    if password.present?
-      self.password_salt = BCrypt::Engine.generate_salt
-      self.password_hash = BCrypt::Engine.hash_secret(password,password_salt)
-    end
-
+  def prep_email
+    self.email = self.email.strip.downcase if self.email
   end
 
-  def self.authenticate(email, password)
-    user = find_by_email(email)
-
-    if user && user.password_hash == BCrypt::Engine.hash_secret(password,user.password_salt)
-      user
-    else
-      nil
-    end
-
+  def create_avatar_url
+    self.avatar_url = "http://www.gravata.com/avatar/#{Digest::MD5.hexdigest(self.email)}?s=50"
   end
-
 end
+
