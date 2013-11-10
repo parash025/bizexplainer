@@ -11,6 +11,8 @@ BizExplainer::Application.routes.draw do
     get 'login' => 'sessions#new', as: 'log_in'
     get 'logout', to: 'sessions#destroy', as: 'logout'
 
+
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

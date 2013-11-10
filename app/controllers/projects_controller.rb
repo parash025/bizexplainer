@@ -2,13 +2,16 @@ class ProjectsController < ApplicationController
 
   before_action :require_login
 
+
 	def index
 		@projects = Project.all
+    @user = current_user
 	end
 
 
 	def new
 		@project = Project.new
+    @user = current_user
 	end
 
 	def create
@@ -37,7 +40,7 @@ class ProjectsController < ApplicationController
   private
 
   def require_login
-    redirect_to log_in_path unless session[:user_id]
+    redirect_to sign_up_path unless session[:user_id]
   end
 
 end

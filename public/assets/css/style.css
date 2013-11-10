@@ -1,3 +1,5 @@
+
+/* Signup */
 div.register{
     margin-top: 20px;
 }
@@ -5,3 +7,27 @@ div.register{
 #signup{
     padding: 20px;
 }
+
+ul{
+    list-style-position: inside;
+    margin-left: -40px;
+}
+
+ul li{
+    margin: none;
+}
+
+body{
+    background: url("../img/white_wall_hash.png") repeat;
+}
+
+
+/* Projects */
+a.navbar-brand{
+    padding: 0px;
+}
+
+div.project-panel{
+    padding: 20px;
+}
+

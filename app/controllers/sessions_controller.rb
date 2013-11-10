@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_url, notice: "Logged In!"
     else
-      flash[:error] = "Wrong username and password."
+      flash[:error] = "Invalid Email and Password."
       redirect_to root_url
     end
   end
