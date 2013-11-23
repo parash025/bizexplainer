@@ -1,5 +1,7 @@
 BizExplainer::Application.routes.draw do
 
+  resources :messages
+
   resources :users
   resources :sessions
   resources :projects

@@ -3,6 +3,9 @@ require 'digest/md5'
 class User < ActiveRecord::Base
   has_secure_password
 
+  has_many :projects
+  has_many :messages
+
   before_validation :prep_email
   before_save :create_avatar_url
 

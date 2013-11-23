@@ -1,3 +1,25 @@
+*{
+border-radius(0) !important;
+
+}
+
+* {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.glyphicon-user, .glyphicon-list-alt, .glyphicon-plus, .glyphicon-log-out, .glyphicon-cog{
+    margin-right: 5px;
+}
+.glyphicon-usd{
+    margin-right: 2px;
+    margin-bottom: -2px;
+}
+.glyphicon-paperclip{
+    margin-right: 5px;
+    padding: 0px;
+}
 
 /* Signup */
 div.register{
@@ -6,6 +28,18 @@ div.register{
 
 #signup{
     padding: 20px;
+}
+
+div.panel{
+    -moz-box-shadow: 3px 3px 25px 0px #777777;
+    -webkit-box-shadow: 3px 3px 25px 0px #777777;
+    box-shadow: 3px 3px 25px 0px #777777;
+}
+
+.footer{
+    background: #3B3B3B;
+    height: 80px;
+    width: 100%;
 }
 
 ul{
@@ -31,3 +65,29 @@ div.project-panel{
     padding: 20px;
 }
 
+#project_content .pay-button{
+    margin-left: 10px;
+}
+
+#project_content .label{
+    padding: 5px;
+}
+
+#project_content .panel{
+    border-color: #F78E3F;
+}
+
+#project_content .panel-heading{
+  background-color: rgba(149,72,54,1);
+  border-color: rgba(149,72,54,0.2);
+}
+
+
+#message_content .message-date{
+    float: right;
+    font-size: 0.8em;
+}
+
+#message_content .attachment{
+    float: right;
+}

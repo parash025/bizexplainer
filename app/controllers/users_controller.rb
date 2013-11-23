@@ -9,8 +9,10 @@ class UsersController < ApplicationController
 
   def create
   	@user = User.new(user_params)
+    @user.user_type = "user"
 
   	   if @user.save
+         session[:user_id] = @user.id
   		    redirect_to root_path, :notice => "Signed Up!"
   	   else
 		      render 'new'

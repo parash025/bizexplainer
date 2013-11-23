@@ -1,0 +1,26 @@
+<div id="message_content" >
+
+  <div class="panel panel-primary">
+
+    <div class="panel-heading">Discuss Your Project</div>
+    <div class="panel-body project-panel">
+      <%= form_for @message, html: {role: "form", multipart: true} do |f| %>
+
+          <div class="form-group">
+            <%= f.text_area :content, rows: "8", class: "form-control",  placeholder: "Type your message here..." %>
+
+          </div>
+
+          <div class="form-group">
+
+            <%= f.submit "Submit", class: "btn btn-primary" %>
+
+          </div>
+
+
+      <% end %>
+    </div>
+    <div class="panel-footer"></div>
+  </div>
+
+</div>

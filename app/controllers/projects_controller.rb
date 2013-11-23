@@ -4,8 +4,7 @@ class ProjectsController < ApplicationController
 
 
 	def index
-		@projects = Project.all
-    @user = current_user
+		@projects = current_user.projects
 	end
 
 
@@ -15,26 +14,32 @@ class ProjectsController < ApplicationController
 	end
 
 	def create
-		@project = Project.new
+		project = Project.new(project_params)
+    project.user_id = current_user.id
+    #project.document_file_name = "User_#{current_user.id.to_s}"+project.document_file_name.to_s
 
-		@project.title = params[:project][:title]
-		@project.video_duration = params[:project][:video_duration]
-		@project.voice_over = params[:project][:voice_over]
-		@project.video_type = 'animated'
-		@project.requirements = params[:project][:requirements]
-		@project.project_status = 'pending'
-		@project.payment_status = 'pending'
-		@project.user_id = 1
-		
-		@project.save
+    if project.save
+      redirect_to root_path, :notice => "Project Created Successfully!"
+    else
+      render 'new'
+    end
 
-		# parameters[:video_type]= 'animated'
-		# parameters[:project_status]= 'pending'
-		# parameters[:payment_status]= 'pending'
-		# parameters[:user_id]= 1
-		
-		# Project.create(parameters) 
+  end
 
+  def show
+    @message = Message.new
+    @project_id = params[:id]
+
+    @project = Project.find(@project_id)
+    @requirements = @project.requirements
+    @attachment = @project.document
+
+    @messages = Message.where(project_id: @project_id).order('created_at ASC')
+
+  end
+
+  def project_params
+    params.require(:project).permit(:title, :video_duration, :voice_over, :requirements, :document)
   end
 
   private

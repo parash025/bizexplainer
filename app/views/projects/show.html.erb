@@ -1,0 +1,61 @@
+<div id="message_content">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div><span class="panel-title text-muted">Your Requirements</span><span class="attachment"><% if @attachment %>
+            <span class="glyphicon glyphicon-paperclip"></span><%= link_to @project.document_file_name, @attachment.url %>
+            </span><% end %></div>
+    </div>
+
+    <div class="panel-body">
+      <%= @requirements if @requirements %>
+    </div>
+  </div>
+
+  <% if @messages %>
+      <% @messages.each do |message| %>
+
+          <% if message.user.user_type == "admin" %>
+              <div class="panel panel-warning">
+          <% else %>
+              <div class="panel panel-success">
+          <% end %>
+
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= current_user.name %><span class="message-date"><%= message.created_at %></span>
+            </h3>
+          </div>
+
+          <div class="panel-body">
+            <%= message.content %>
+          </div>
+
+
+          </div>
+      <% end %>
+  <% end %>
+
+
+  <div class="well">
+
+    <div class="panel-heading"><h3 class="panel-title">Discuss Your Project</h3></div>
+    <div class="panel-body project-panel">
+      <%= form_for @message, html: {role: "form", multipart: true} do |f| %>
+
+          <div class="form-group">
+            <%= f.text_area :content, rows: "8", class: "form-control", placeholder: "Type your message here..." %>
+
+          </div>
+
+          <div class="form-group">
+            <%= f.submit "Submit", class: "btn btn-success" %>
+
+          </div>
+
+          <%= f.hidden_field :project_id, value: @project_id %>
+
+      <% end %>
+    </div>
+
+  </div>
+  </div>
