@@ -13,6 +13,7 @@ class MessagesController < ApplicationController
   def create
     message = Message.new(message_params)
     message.user_id = current_user.id
+    message.read = false
     #project.document_file_name = "User_#{current_user.id.to_s}"+project.document_file_name
 
     if message.save

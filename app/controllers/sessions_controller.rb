@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
 
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_url
+      redirect_to root_url if user.user_type == 'user'
+      redirect_to admin_url if user.user_type == 'admin'
     else
       flash[:error] = "Invalid Email and Password."
       redirect_to root_url

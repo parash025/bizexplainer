@@ -2,8 +2,25 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <div><span class="panel-title text-muted">Your Requirements</span><span class="attachment"><% if @attachment %>
-            <span class="glyphicon glyphicon-paperclip"></span><%= link_to @project.document_file_name, @attachment.url %>
+      <div><span class="panel-title text-muted">Your Requirements</span><span class="attachment"><% if @assets.count > 0 %>
+
+            <span class="glyphicon glyphicon-paperclip"></span>
+            <div class="btn-group">
+
+              <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                Attachments <span class="caret"></span>
+              </button>
+
+              <ul class="dropdown-menu">
+                <% @assets.each do |asset| %>
+
+                   <li> <%= link_to asset.document_file_name, asset.document.url %> </li>
+
+                <% end %>
+              </ul>
+            </div>
+
+
             </span><% end %></div>
     </div>
 
@@ -56,6 +73,6 @@
 
       <% end %>
     </div>
-
   </div>
   </div>
+    </div>

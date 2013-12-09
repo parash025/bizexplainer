@@ -51,12 +51,26 @@
 
               <div class="form-group">
                 <label for="document">Attachments</label>
-                <%= f.file_field :document, class: "form-control" %>
+
+                <div class="container attachments">
+                  <%= f.fields_for :assets do |asset| %>
+
+                      <div class="row file-row">
+                       <div class="col-sm-4"><%= asset.file_field :document, class: "form-control" %></div> <div class="col-sm-6 img remove attach">
+                        <a href="#"></a><i class="fa fa-minus-square fa-2x"></i></div>
+
+                        </div>
+
+                  <% end %>
+                  <div class="attach col-sm-2"><i class="fa fa-plus-square fa-2x"></i><span></span><span class="attach-text"><strong>Attach More...</strong></span></div>
+
+                </div>
+
               </div>
 
               <div class="form-group">
 
-                <%= f.submit "Create", class: "btn btn-success" %>
+                <%= f.submit "Create", class: "btn btn-success shadow" %>
 
               </div>
 
@@ -66,5 +80,6 @@
       </div>
 
 	</div>
+    <script src="/assets/js/script.js"></script>
 
 

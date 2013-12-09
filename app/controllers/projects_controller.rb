@@ -7,10 +7,16 @@ class ProjectsController < ApplicationController
 		@projects = current_user.projects
 	end
 
+  def admin
+    @projects = Project.all
+  end
+
 
 	def new
 		@project = Project.new
     @user = current_user
+    4.times { @project.assets.build }
+
 	end
 
 	def create
@@ -32,14 +38,18 @@ class ProjectsController < ApplicationController
 
     @project = Project.find(@project_id)
     @requirements = @project.requirements
-    @attachment = @project.document
+    @assets = @project.assets
 
     @messages = Message.where(project_id: @project_id).order('created_at ASC')
+    @messages.each do |message|
+      message.read = true
+      message.save
+    end
 
   end
 
   def project_params
-    params.require(:project).permit(:title, :video_duration, :voice_over, :requirements, :document)
+    params.require(:project).permit(:title, :video_duration, :voice_over, :requirements, assets_attributes: [:document])
   end
 
   private

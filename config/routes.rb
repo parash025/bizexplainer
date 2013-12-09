@@ -9,9 +9,11 @@ BizExplainer::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'projects#index'
 
+    get 'admin' => 'projects#admin', as: 'admin'
     get 'signup' => 'users#new', as: 'sign_up'
     get 'login' => 'sessions#new', as: 'log_in'
     get 'logout', to: 'sessions#destroy', as: 'logout'
+
 
 
 

@@ -1,10 +1,12 @@
 class Project < ActiveRecord::Base
   belongs_to :user
   has_many :messages
+  has_many :assets
+
+  accepts_nested_attributes_for :assets
+
 
   after_initialize :init
-
-  has_attached_file :document, url: "/documents/:filename", path: ":rails_root/public/documents/:filename"
 
 
   def init

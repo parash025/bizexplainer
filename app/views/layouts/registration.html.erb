@@ -11,12 +11,16 @@
 
 </head>
 <body>
-		<div class="container">
-          <img src="/assets/img/bizexplainer.png" alt=""/>
-			<%= yield %>
 
+        <div id="wrap">
+          <div class="container" id="main">
+            <img src="/assets/img/bizexplainer.png" alt=""/>
+            <%= yield %>
 
-		</div>
+            <div id="push"></div>
+          </div>
+        </div>
+
         <script src="/assets/js/script.js"></script>
 
         <%= render 'layouts/footer' %>
