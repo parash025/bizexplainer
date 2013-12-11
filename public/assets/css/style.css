@@ -260,6 +260,11 @@ div.register div.register-panel{
 .btn-success{
     color: #ffffff;
     background-color: #1abc9c;
+}
+
+.create-project .btn-success{
+    width: 100px;
+    font-size: 16px;
 
 }
 
@@ -269,8 +274,3 @@ div.register div.register-panel{
     border-color: #48c9b0;
 }
 
-.shadow{
-    -webkit-box-shadow: 3px 8px 6px -6px black;
-    -moz-box-shadow: 3px 8px 6px -6px black;
-    box-shadow: 3px 8px 6px -6px black;
-}

@@ -4,11 +4,21 @@ class ProjectsController < ApplicationController
 
 
 	def index
-		@projects = current_user.projects
+      if admin?
+        @projects = Project.all.order(created_at: :desc)
+        render :admin
+      else
+        @projects = current_user.projects
+      end
 	end
 
   def admin
-    @projects = Project.all
+    if admin?
+      @projects = Project.all.order(created_at: :desc)
+    else
+      @projects = current_user.projects
+      render :index
+    end
   end
 
 
@@ -30,6 +40,12 @@ class ProjectsController < ApplicationController
       render 'new'
     end
 
+  end
+
+  def destroy
+    project = Project.find(params[:id])
+    project.destroy
+    redirect_to admin_path
   end
 
   def show
