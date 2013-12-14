@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
       else
         @projects = current_user.projects
       end
+
 	end
 
   def admin
@@ -35,6 +36,8 @@ class ProjectsController < ApplicationController
     #project.document_file_name = "User_#{current_user.id.to_s}"+project.document_file_name.to_s
 
     if project.save
+      project.project_status = 'Pending'
+      project.payment_status = 'Pending'
       redirect_to root_path, :notice => "Project Created Successfully!"
     else
       render 'new'
@@ -48,12 +51,23 @@ class ProjectsController < ApplicationController
     redirect_to admin_path
   end
 
+  def update
+      project = Project.find(params[:id])
+      project_status = params[:project]
+      project.project_status = project_status[:project_status]
+      project.save
+
+      redirect_to project_path
+
+  end
+
   def show
     @message = Message.new
     @project_id = params[:id]
 
     @project = Project.find(@project_id)
     @requirements = @project.requirements
+    @project_status = @project.project_status
     @assets = @project.assets
 
     @messages = Message.where(project_id: @project_id).order('created_at ASC')

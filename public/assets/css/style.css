@@ -201,6 +201,13 @@ div.register div.register-panel{
     float: right;
 }
 
+#message_content .panel-heading{
+    border-radius: 0;
+}
+
+#message_content .admin-panel .panel-title{
+
+}
 
 
 /* FONT */
@@ -260,6 +267,7 @@ div.register div.register-panel{
 .btn-success{
     color: #ffffff;
     background-color: #1abc9c;
+    border-bottom: 1px solid #16A085;
 }
 
 .create-project .btn-success{

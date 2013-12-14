@@ -37,11 +37,18 @@
             <tr>
               <td><strong><%= project.user.name %></strong></td>
               <td data-width="200"><%= link_to project.title, project_path(project) %> <span class="badge"> <%= project.messages.where(read: false).count %></span></td>
-              <td><span class="label label-warning"><%= project.project_status %></span></td>
+              <% if project.project_status == 'Pending' %>
+                <td><span class="label label-danger"><%= project.project_status %></span></td>
+              <% elsif project.project_status == 'Processing' %>
+                  <td><span class="label label-warning"><%= project.project_status %></span></td>
+              <% else %>
+                  <td><span class="label label-success"><%= project.project_status %></span></td>
+              <% end %>
+
               <td>
-                <span class="label label-warning"><%= project.payment_status %></span><a href="#" class="btn btn-success btn-xs pay-button" role="button"><span class="glyphicon glyphicon-usd"></span><strong>Pay
+                <span class="label label-danger"><%= project.payment_status %></span><a href="#" class="btn btn-success btn-xs pay-button" role="button"><span class="glyphicon glyphicon-usd"></span><strong>Pay
                 Now</strong></a></td>
-              <td><%= button_to "Delete", project, confirm: "Are you sure you want to delete?", method: :delete %></td>
+              <td><%= button_to "Delete", project, confirm: "Are you sure you want to delete?", method: :delete, class: 'btn btn-danger btn-xs' %></td>
             </tr>
         <% end %>
       </table>

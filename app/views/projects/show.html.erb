@@ -14,7 +14,7 @@
               <ul class="dropdown-menu">
                 <% @assets.each do |asset| %>
 
-                   <li> <%= link_to asset.document_file_name, asset.document.url %> </li>
+                    <li> <%= link_to asset.document_file_name, asset.document.url %> </li>
 
                 <% end %>
               </ul>
@@ -28,6 +28,98 @@
       <%= @requirements if @requirements %>
     </div>
   </div>
+
+
+  <% if current_user.user_type == 'admin' %>
+
+      <% if @project_status == 'Pending' %>
+
+          <div class="panel panel-danger admin-panel">
+
+      <% elsif @project_status== 'Processing' %>
+          <div class="panel panel-warning admin-panel">
+      <% else %>
+          <div class="panel panel-success admin-panel">
+      <% end %>
+
+      <div class="panel-heading">
+        <div><span class="panel-title text-muted">Project Status: <%= @project_status %></span><span class="attachment"><% if @assets.count > 0 %>
+
+            <span class="glyphicon glyphicon-paperclip"></span>
+            <div class="btn-group">
+
+              <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                Deliverables <span class="caret"></span>
+              </button>
+
+              <ul class="dropdown-menu">
+                <% @assets.each do |asset| %>
+
+                    <li> <%= link_to asset.document_file_name, asset.document.url %> </li>
+
+                <% end %>
+              </ul>
+            </div>
+
+
+              </span><% end %></div>
+      </div>
+
+      <div class="panel-body">
+        <%= form_for(@project) do |f| %>
+            <div class="form-group">
+              <label for="project_status" class="control-label">Project Status</label>
+
+              <div>
+                <%= f.select :project_status, ['Pending', 'Processing', 'Complete'], class: "form-control" %>
+              </div>
+
+
+            </div>
+
+            <div class="form-group">
+
+              <label for="project_status" class="control-label">Deliver Completed Video</label>
+
+              <div>
+                <%= f.fields_for :deliverables do |d| %>
+
+                    <div class="row file-row">
+                      <div class="col-sm-4"><%= d.file_field :document, class: "form-control" %></div>
+
+                    </div>
+                <% end %>
+
+              </div>
+
+
+            </div>
+
+            <div class="form-group">
+
+              <% if @project_status == 'Pending' %>
+
+                  <%= f.submit "Submit", class: "btn btn-danger" %>
+
+              <% elsif @project_status== 'Processing' %>
+                  <%= f.submit "Submit", class: "btn btn-warning" %>
+              <% else %>
+                  <%= f.submit "Submit", class: "btn btn-success" %>
+              <% end %>
+
+
+
+
+            </div>
+
+        <% end %>
+
+      </div>
+      </div>
+
+  <% end %>
+
+
 
   <% if @messages %>
       <% @messages.each do |message| %>
@@ -75,4 +167,4 @@
     </div>
   </div>
   </div>
-    </div>
+  </div>
