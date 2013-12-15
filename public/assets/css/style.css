@@ -205,9 +205,58 @@ div.register div.register-panel{
     border-radius: 0;
 }
 
-#message_content .admin-panel .panel-title{
-
+#message_content .panel-warning .panel-heading{
+    background-color: #D35400;
+    color: #fff;
 }
+
+#message_content .panel-warning{
+     border-color: #E67E22;
+}
+
+#message_content .panel-warning .panel-title{
+    color: #fff;
+}
+
+#message_content .panel-success .panel-heading{
+    background-color: #16A085;
+    color: #fff;
+}
+
+#message_content .panel-success{
+    border-color: #1ABC9C;
+}
+
+#message_content .panel-success .panel-title{
+    color: #fff;
+}
+
+#message_content .panel-danger .panel-heading{
+    background-color: #C0392B;
+    color: #fff;
+}
+
+#message_content .panel-danger{
+    border-color: #E74C3C;
+}
+
+#message_content .panel-danger .panel-title{
+    color: #fff;
+}
+
+#message_content .panel-default .panel-heading{
+    background-color: #7F8C8D;
+    color: #fff;
+}
+
+#message_content .panel-default{
+    border-color: #95A5A6;
+}
+
+#message_content .panel-default .panel-title{
+    color: #fff;
+}
+
 
 
 /* FONT */

@@ -43,7 +43,7 @@
       <% end %>
 
       <div class="panel-heading">
-        <div><span class="panel-title text-muted">Project Status: <%= @project_status %></span><span class="attachment"><% if @assets.count > 0 %>
+        <div><span class="panel-title text-muted">Project Status: <%= @project_status %></span><span class="attachment"><% if @deliverables.count > 0 %>
 
             <span class="glyphicon glyphicon-paperclip"></span>
             <div class="btn-group">
@@ -53,9 +53,9 @@
               </button>
 
               <ul class="dropdown-menu">
-                <% @assets.each do |asset| %>
+                <% @deliverables.each do |deliverable| %>
 
-                    <li> <%= link_to asset.document_file_name, asset.document.url %> </li>
+                    <li> <%= link_to deliverable.document_file_name, deliverable.document.url %> </li>
 
                 <% end %>
               </ul>
@@ -136,7 +136,7 @@
           </div>
 
           <div class="panel-body">
-            <%= message.content %>
+            <%= simple_format(message.content) %>
           </div>
 
 

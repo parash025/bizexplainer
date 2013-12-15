@@ -22,7 +22,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-
 	def new
 		@project = Project.new
     @user = current_user
@@ -33,11 +32,11 @@ class ProjectsController < ApplicationController
 	def create
 		project = Project.new(project_params)
     project.user_id = current_user.id
+    project.project_status = 'Pending'
+    project.payment_status = 'Pending'
     #project.document_file_name = "User_#{current_user.id.to_s}"+project.document_file_name.to_s
 
     if project.save
-      project.project_status = 'Pending'
-      project.payment_status = 'Pending'
       redirect_to root_path, :notice => "Project Created Successfully!"
     else
       render 'new'
@@ -53,12 +52,8 @@ class ProjectsController < ApplicationController
 
   def update
       project = Project.find(params[:id])
-      project_status = params[:project]
-      project.project_status = project_status[:project_status]
-      project.save
-
+      project.update_attributes update_params
       redirect_to project_path
-
   end
 
   def show
@@ -69,6 +64,7 @@ class ProjectsController < ApplicationController
     @requirements = @project.requirements
     @project_status = @project.project_status
     @assets = @project.assets
+    @deliverables = @project.deliverables
 
     @messages = Message.where(project_id: @project_id).order('created_at ASC')
     @messages.each do |message|
@@ -76,13 +72,19 @@ class ProjectsController < ApplicationController
       message.save
     end
 
+    1.times { @project.deliverables.build unless @project.deliverables.present?}
+
   end
+
+  private
 
   def project_params
     params.require(:project).permit(:title, :video_duration, :voice_over, :requirements, assets_attributes: [:document])
   end
 
-  private
+  def update_params
+    params.require(:project).permit(:project_status, deliverables_attributes: [:document])
+  end
 
   def require_login
     redirect_to sign_up_path unless session[:user_id]

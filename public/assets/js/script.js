@@ -1,5 +1,7 @@
 $(function(){
 
+    $('.alert').delay(4000).hide('3000');
+
     $('div.file-row').addClass('file-row-hidden');
 
    var file_field = $('div.attachments div.file-row').eq(0);
