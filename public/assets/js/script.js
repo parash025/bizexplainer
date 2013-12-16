@@ -1,6 +1,6 @@
 $(function(){
 
-    $('.alert').delay(4000).hide('3000');
+    $('.alert').delay(3000).hide('3000');
 
     $('div.file-row').addClass('file-row-hidden');
 

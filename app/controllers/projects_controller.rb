@@ -68,7 +68,7 @@ class ProjectsController < ApplicationController
 
     @messages = Message.where(project_id: @project_id).order('created_at ASC')
     @messages.each do |message|
-      message.read = true
+      message.read = true if params[:redirect] != 'yes'
       message.save
     end
 

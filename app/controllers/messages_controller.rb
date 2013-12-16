@@ -17,8 +17,7 @@ class MessagesController < ApplicationController
     #project.document_file_name = "User_#{current_user.id.to_s}"+project.document_file_name
 
     if message.save
-      path = projects_path+'/'+message.project_id.to_s
-      redirect_to path, :notice => "Message Sent"
+      redirect_to :controller => 'projects', :action => 'show', :id => message.project_id.to_s, :redirect => 'yes'
     else
       render 'new'
     end
