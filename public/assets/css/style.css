@@ -6,6 +6,7 @@ body {
     height: 100%;
     color: #34495e;
     font-family: "Lato", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
     /* The html and body elements cannot have any padding or margin. */
 }
 
@@ -190,6 +191,57 @@ div.register div.register-panel{
 #project_content .file-row-hidden{
     display: none;
 }
+#project_content span.not-read{
+   background-color: #2ECC71;
+}
+#project_content div.project-stat{
+    background-color: #fff;
+    height: 250px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    position: relative;
+    left: 2em;
+    padding: 0;
+}
+#project_content .project-status h1{
+    font-size: 0.9em;
+    text-align: center;
+    border-bottom: 2px solid;
+    padding-bottom: 15px;
+}
+
+#project_content .project-status h1.title-pending{
+     color: #EB5739;
+}
+
+#project_content .project-status h1.title-processing{
+    color: #E67E22;
+}
+
+#project_content .project-status h1.title-completed{
+    color: #16A085;
+}
+
+#project_content .project-status .number-stat{
+    text-align: center;
+    font-size: 5em;
+    line-height: 1.5em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #message_content .message-date{

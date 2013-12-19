@@ -34,9 +34,11 @@
           <th class="text-muted">Delete</th>
         </tr>
         <% @projects.each do |project| %>
+            <% total_messages = project.messages.where(read: false).where.not(user_id: current_user.id).count %>
+            <% has_read = total_messages > 0 ? "badge not-read pull-right":"badge pull-right"  %>
             <tr>
               <td><strong><%= project.user.name %></strong></td>
-              <td data-width="200"><%= link_to project.title, project_path(project) %> <span class="badge"> <%= project.messages.where(read: false).count %></span></td>
+              <td data-width="200"><%= link_to project.title, project_path(project) %> <span class="<%= has_read %>"><%= total_messages %></span></td>
               <% if project.project_status == 'Pending' %>
                 <td><span class="label label-danger"><%= project.project_status %></span></td>
               <% elsif project.project_status == 'Processing' %>
