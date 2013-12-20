@@ -113,7 +113,9 @@ div.project-panel{
 }
 
 #project_content .label{
-    padding: 5px;
+    padding: 10px;
+    border-radius: 0;
+    font-size: 0.9em;
 }
 
 #project_content .panel{
@@ -196,7 +198,7 @@ div.register div.register-panel{
 }
 #project_content div.project-stat{
     background-color: #fff;
-    height: 250px;
+    height: 200px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
     border-radius: 2px;
     position: relative;
@@ -204,44 +206,38 @@ div.register div.register-panel{
     padding: 0;
 }
 #project_content .project-status h1{
-    font-size: 0.9em;
+    font-size: 0.8em;
     text-align: center;
     border-bottom: 2px solid;
     padding-bottom: 15px;
 }
 
-#project_content .project-status h1.title-pending{
+#project_content .project-status h1.title-pending,#project_content .project-status .number-stat-pending{
      color: #EB5739;
 }
 
-#project_content .project-status h1.title-processing{
+#project_content .project-status h1.title-processing,#project_content .project-status .number-stat-processing{
     color: #E67E22;
 }
 
-#project_content .project-status h1.title-completed{
+#project_content .project-status h1.title-completed,#project_content .project-status .number-stat-completed{
     color: #16A085;
 }
 
 #project_content .project-status .number-stat{
     text-align: center;
-    font-size: 5em;
+    font-size: 4em;
     line-height: 1.5em;
 }
 
+#project_content table td{
+    vertical-align: 0;
+    line-height: 1em;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+#project_content table td span.project-title a{
+    color: #2980B9;
+}
 
 
 #message_content .message-date{
@@ -365,10 +361,16 @@ div.register div.register-panel{
 
 /* Flat-UI */
 
+#project_content .btn-success{
+   margin-bottom: 0.2em;
+}
+
+
 .btn-success{
     color: #ffffff;
     background-color: #1abc9c;
     border-bottom: 1px solid #16A085;
+    font-size: 1em;
 }
 
 .create-project .btn-success{
