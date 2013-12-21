@@ -2,13 +2,38 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <div><span class="panel-title text-muted">Your Requirements</span><span class="attachment"><% if @assets.count > 0 %>
+      <div><span class="panel-title text-muted">Your Requirements</span>
 
-            <span class="glyphicon glyphicon-paperclip"></span>
+
+        <span class="attachment"><% if @deliverables.count > 0 %>
+
             <div class="btn-group">
 
               <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                Attachments <span class="caret"></span>
+                <span class="glyphicon glyphicon-cloud-download"></span>
+                <strong>Downloads<span class="caret"></span></strong>
+              </button>
+
+              <ul class="dropdown-menu">
+                <% @deliverables.each do |deliverable| %>
+
+                    <li> <%= link_to deliverable.document_file_name, deliverable.document.url %> </li>
+
+                <% end %>
+              </ul>
+            </div>
+
+
+           </span><% end %>
+
+        <span class="attachment"><% if @assets.count > 0 %>
+
+
+            <div class="btn-group">
+
+              <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-paperclip"></span>
+                <strong>Attachments <span class="caret"></span></strong>
               </button>
 
               <ul class="dropdown-menu">
@@ -21,7 +46,8 @@
             </div>
 
 
-            </span><% end %></div>
+            </span><% end %>
+        </div>
     </div>
 
     <div class="panel-body">

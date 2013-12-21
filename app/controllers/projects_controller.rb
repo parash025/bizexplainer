@@ -9,7 +9,16 @@ class ProjectsController < ApplicationController
         render :admin
       else
         @projects = current_user.projects
-      end
+        project_pending = current_user.projects.where(project_status: 'Pending')
+        @project_pending = project_pending.count
+
+        project_processing = current_user.projects.where(project_status: 'Processing')
+        @project_processing = project_processing.count
+
+        project_completed = current_user.projects.where(project_status: 'Complete')
+        @project_completed = project_completed.count
+
+    end
 
 	end
 
@@ -68,7 +77,7 @@ class ProjectsController < ApplicationController
 
     @messages = Message.where(project_id: @project_id).order('created_at ASC')
     @messages.each do |message|
-      message.read = true if params[:redirect] != 'yes'
+      message.read = true if params[:redirect] != 'yes'  && message.user.id != current_user.id
       message.save
     end
 

@@ -48,9 +48,9 @@
               <% end %>
 
               <td>
-                <span class="label label-danger"><%= project.payment_status %></span><a href="#" class="btn btn-success btn-xs pay-button" role="button"><span class="glyphicon glyphicon-usd"></span><strong>Pay
+                <span class="label label-danger"><%= project.payment_status %></span><a href="#" class="btn btn-success btn-small pay-button" role="button"><span class="glyphicon glyphicon-usd"></span><strong>Pay
                 Now</strong></a></td>
-              <td><%= button_to "Delete", project, confirm: "Are you sure you want to delete?", method: :delete, class: 'btn btn-danger btn-xs' %></td>
+              <td><%= button_to "Delete", project, confirm: "Are you sure you want to delete?", method: :delete, class: 'btn btn-danger btn-small' %></td>
             </tr>
         <% end %>
       </table>

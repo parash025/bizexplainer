@@ -41,6 +41,11 @@ body {
 
 #project_content{
     padding-bottom: 3em;
+
+}
+
+div#project_content, div#message_content{
+    margin-top: 80px;
 }
 
 
@@ -247,6 +252,7 @@ div.register div.register-panel{
 
 #message_content .attachment{
     float: right;
+    margin-right: 20px;
 }
 
 #message_content .panel-heading{
@@ -304,6 +310,8 @@ div.register div.register-panel{
 #message_content .panel-default .panel-title{
     color: #fff;
 }
+
+
 
 
 
