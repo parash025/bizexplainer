@@ -244,6 +244,25 @@ div.register div.register-panel{
     color: #2980B9;
 }
 
+#project_content .alert{
+    background-color: #9B59B6;
+    border-radius: 2px;
+    color: #fff;
+}
+
+#register_content .alert{
+    background-color: #E74C3C;
+    border-radius: 2px;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
 
 #message_content .message-date{
     float: right;
