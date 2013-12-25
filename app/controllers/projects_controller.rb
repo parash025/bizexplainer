@@ -66,6 +66,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    Time.zone = cookies[:bz_time_zone]
     @message = Message.new
     @project_id = params[:id]
 

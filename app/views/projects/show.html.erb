@@ -155,7 +155,7 @@
           <% end %>
 
           <div class="panel-heading">
-            <h3 class="panel-title"><%= message.user.name %><span class="message-date"><%= message.created_at %></span>
+            <h3 class="panel-title"><%= message.user.name %><span class="message-date"><%= message.created_at.strftime("%B %d at %I:%M %p") %></span>
             </h3>
           </div>
 
