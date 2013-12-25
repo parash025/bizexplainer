@@ -81,7 +81,7 @@ class ProjectsController < ApplicationController
       message.save
     end
 
-    1.times { @project.deliverables.build unless @project.deliverables.present?}
+    1.times { @deliverables.build unless @deliverables.present?}
 
   end
 
