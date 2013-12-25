@@ -271,7 +271,8 @@ div.register div.register-panel{
 
 #message_content .attachment{
     float: right;
-    margin-right: 20px;
+    margin-right: 10px;
+
 }
 
 #message_content .panel-heading{
