@@ -7,4 +7,9 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :deliverables
 
+
+  def self.get_all_projects(order = :desc)
+      Project.all.order(created_at: order)
+  end
+
 end

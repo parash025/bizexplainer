@@ -12,6 +12,20 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
 
+  def pending_projects
+    self.projects.where(project_status: 'Pending')
+  end
+
+  def processing_projects
+    self.projects.where(project_status: 'Processing')
+  end
+
+  def completed_projects
+    self.projects.where(project_status: 'Complete')
+  end
+
+
+
   private
 
   def prep_email

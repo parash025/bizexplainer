@@ -3,50 +3,49 @@ class ProjectsController < ApplicationController
   before_action :require_login
 
 
-	def index
-      if admin?
-        @projects = Project.all.order(created_at: :desc)
-        render :admin
-      else
-        @projects = current_user.projects
-        project_pending = current_user.projects.where(project_status: 'Pending')
-        @project_pending = project_pending.count
+  def index
+    if admin?
+      @projects = Project.get_all_projects
+      render :admin
+    else
+      @projects = current_user.projects
+      project_pending = current_user.pending_projects
+      @project_pending = project_pending.count
 
-        project_processing = current_user.projects.where(project_status: 'Processing')
-        @project_processing = project_processing.count
+      project_processing = current_user.processing_projects
+      @project_processing = project_processing.count
 
-        project_completed = current_user.projects.where(project_status: 'Complete')
-        @project_completed = project_completed.count
+      project_completed = current_user.completed_projects
+      @project_completed = project_completed.count
 
     end
 
-	end
+  end
 
   def admin
     if admin?
-      @projects = Project.all.order(created_at: :desc)
+      @projects = Project.get_all_projects
     else
       @projects = current_user.projects
       render :index
     end
   end
 
-	def new
-		@project = Project.new
+  def new
+    @project = Project.new
     @user = current_user
     4.times { @project.assets.build }
+  end
 
-	end
-
-	def create
-		project = Project.new(project_params)
+  def create
+    project = Project.new(project_params)
     project.user_id = current_user.id
     project.project_status = 'Pending'
     project.payment_status = 'Pending'
     #project.document_file_name = "User_#{current_user.id.to_s}"+project.document_file_name.to_s
 
     if project.save
-      redirect_to root_path, :notice => "Project Created Successfully!"
+      redirect_to root_path, :notice => 'Project Created Successfully!'
     else
       render 'new'
     end
@@ -60,9 +59,9 @@ class ProjectsController < ApplicationController
   end
 
   def update
-      project = Project.find(params[:id])
-      project.update_attributes update_params
-      redirect_to project_path
+    project = Project.find(params[:id])
+    project.update_attributes update_params
+    redirect_to project_path
   end
 
   def show
@@ -77,12 +76,13 @@ class ProjectsController < ApplicationController
     @deliverables = @project.deliverables
 
     @messages = Message.where(project_id: @project_id).order('created_at ASC')
+
     @messages.each do |message|
-      message.read = true if params[:redirect] != 'yes'  && message.user.id != current_user.id
+      message.read = true if params[:redirect] != 'yes' && message.user.id != current_user.id    #mark as read if the user has already read the message
       message.save
     end
 
-    1.times { @deliverables.build unless @deliverables.present?}
+    1.times { @deliverables.build unless @deliverables.present? }
 
   end
 
