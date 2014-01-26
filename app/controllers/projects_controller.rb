@@ -60,6 +60,15 @@ class ProjectsController < ApplicationController
 
   def update
     project = Project.find(params[:id])
+
+    message_params = Hash.new
+    message_params[:content] = 'Project Completed'
+    message_params[:project_id] = params[:id]
+    message_params[:user_id] = current_user.id
+
+    message = Message.new message_params
+    message.save
+
     project.update_attributes update_params
     redirect_to project_path
   end

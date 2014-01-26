@@ -2,7 +2,6 @@ class UsersController < ApplicationController
  
   layout "registration"
 
-
   def new
   	@user = User.new
   end
@@ -12,9 +11,9 @@ class UsersController < ApplicationController
     @user.user_type = "user"
 
   	   if @user.save
-         UserMailer.registration_confirmation.deliver
          session[:user_id] = @user.id
   		    redirect_to root_path, :notice => "Signed Up!"
+          UserMailer.registration_confirmation(@user).deliver
   	   else
 		      render 'new'
 	     end

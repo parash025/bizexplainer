@@ -2,8 +2,10 @@ class UserMailer < ActionMailer::Base
   default from: "parash025@gmail.com"
 
 
-  def registration_confirmation
-    mail to: "parasht@gmail.com", from: "parash025@gmail.com", subject: "BizExplainer", body: "Thanks for registering!!"
+  def registration_confirmation (user)
+    @user = user
+    @url = 'http://bizexplainer.com/login'
+    mail to: @user.email, subject: "BizExplainer"
   end
 
 end
